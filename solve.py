@@ -340,7 +340,8 @@ async def main():
             for line in f:
                 try:
                     entry = json.loads(line.strip())
-                    already_used_urls.update(entry.keys())
+                    if isinstance(entry, dict):
+                        already_used_urls.update(entry.keys())
                 except Exception as e:
                     continue
 
